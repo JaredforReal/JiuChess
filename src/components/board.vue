@@ -8,36 +8,51 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 
-export default {
-    setup() {
-        const size = 14;
-        const board = ref(Array.from({ length: size }, () => Array(size).fill(null)));
-        const currentPlayer = ref(1     ); // 0 表示黑棋，1 表示白棋
-        const totalMoves = ref(0);
+const size = 14;
 
-        const placePiece = (row, col) => {
-            if (board.value[row][col] === null) {
-                // 落子
-                board.value[row][col] = currentPlayer.value;
-                currentPlayer.value = 1 - currentPlayer.value; // 切换玩家
-                totalMoves.value++;
+const board = ref(Array.from({ length: size }, () => Array(size).fill(null)));
 
-                // 检查是否已经填满所有点
-                if (totalMoves.value === size * size) {
-                    alert('棋盘已满，游戏结束！');
-                }
-            }
-        };
+const currentPlayer = ref(1); 
 
-        return {
-            board,
-            currentPlayer,
-            placePiece,
-        };
-    },
+const whitePieceLeft = ref(98);
+const blackPieceLeft = ref(98);
+
+const totalMoves = ref(0);
+
+const initializeGame = () => {
+    const center = Math.floor(size / 2);
+    board.value[center][center] = 1;
+    board.value[center - 1][center - 1] = 0;
+    whitePieceLeft.value--;
+    blackPieceLeft.value--;
+    totalMoves.value += 2;
+};
+
+initializeGame();
+
+const placePiece = (row, col) => {
+    if (board.value[row][col] === null) {
+        // 落子
+        board.value[row][col] = currentPlayer.value;
+
+        if (currentPlayer.value === 1) {
+            whitePieceLeft.value--;
+            totalMoves.value++;
+            currentPlayer.value = 0;
+        } else {
+            blackPieceLeft.value--;
+            totalMoves.value++;
+            currentPlayer.value = 1;
+        }
+
+        // 检查是否已经填满所有点
+        if (totalMoves.value === size * size) {
+            alert('棋盘已满，游戏结束！');
+        }
+    }
 };
 </script>
 
