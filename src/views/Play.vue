@@ -1,7 +1,7 @@
 <template>
     <h2>Jie-Chess Game</h2>
     <div class="parent">
-        <board6x6 />
+        <Board6x6 />
     </div>
     <div class="buttons">
         <button @click="resetGame">Reset Game</button>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import board6x6 from '../components/board6x6.vue';
+import Board6x6 from '../components/Board6x6.vue';
 import { useRouter } from 'vue-router';
 
 const resetGame = () => {
@@ -33,6 +33,7 @@ const goToGuide = () => {
 h2 {
     text-align: center;
 }
+
 .parent {
     display: flex;
     justify-content: center;

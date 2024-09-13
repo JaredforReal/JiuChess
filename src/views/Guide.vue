@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Jiu-Chess Guide</h2>
+        <h1>Jiu-Chess Guide</h1>
         <p>This section will guide you through the rules and strategies of Jiu-Chess.</p>
         <button @click="startGame">Start Game</button>
         <button @click="backToMenu">Back to Menu</button>
@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
