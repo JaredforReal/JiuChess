@@ -1,5 +1,22 @@
 <template>
   <div class="Board">
+    <div class="game-info left">
+      <div v-if="gamePhase === 'placing'">
+        <h3>布子阶段</h3>
+        <p>白子剩余 {{ whitePieceLeft }} 颗</p>
+        <p v-if="currentPlayer === 1">白子请落子</p>
+      </div>
+      <div v-else-if="gamePhase === 'moving'">
+        <h3>走子阶段</h3>
+        <p>白子请移动棋子</p>
+      </div>
+      <div v-else-if="gamePhase === 'removing'">
+        <h3>走子阶段</h3>
+        <p>白子请移除黑子</p>
+        <p>待移除的棋子数：{{ piecessToRemove }}</p>
+      </div>
+    </div>
+
     <div class="chessboard">
       <div v-for="(row, rowIndex) in board" :key="rowIndex" class="row">
         <div v-for="(cell, colIndex) in row" :key="colIndex" class="cell"
@@ -12,31 +29,32 @@
       </div>
     </div>
 
-    <div class="game-info">
+    <div class="game-info right">
       <div v-if="gamePhase === 'placing'">
-        <h3>Game Phase: {{ gamePhase }}</h3>
-        <p>Player {{ currentPlayer === 1 ? 'White' : 'Black' }}'s turn</p>
-        <p>Place your piece</p>
-        <p>White pieces left: {{ whitePieceLeft }}</p>
-        <p>Black pieces left: {{ blackPieceLeft }}</p>
+        <h3>布子阶段</h3>
+        <p>黑子剩余 {{ blackPieceLeft }} 颗</p>
+        <p v-if="currentPlayer === 0">黑子请落子</p>
       </div>
-
       <div v-else-if="gamePhase === 'moving'">
-        <h3>Game Phase: {{ gamePhase }}</h3>
-        <p>Player {{ currentPlayer === 1 ? 'White' : 'Black' }}'s turn</p>
-        <p>Move your piece</p>
+        <h3>走子阶段</h3>
+        <p>黑子请移动棋子</p>
       </div>
-
       <div v-else-if="gamePhase === 'removing'">
-        <h3>Game Phase: {{ gamePhase }}</h3>
-        <p>Player {{ currentPlayer === 1 ? 'White' : 'Black' }}'s turn</p>
-        <p>Remove {{ piecessToRemove }} pieces</p>
+        <h3>走子阶段</h3>
+        <p>黑子请移除白子</p>
+        <p>待移除的棋子数：{{ piecessToRemove }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.Board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .chessboard {
   text-align: center;
   width: 560px;
@@ -49,7 +67,6 @@
 }
 
 .row {
-  /* text-align: center; */
   display: contents;
 }
 
@@ -88,8 +105,19 @@
 
 .game-info {
   text-align: center;
-  margin-top: 10px;
-  border: 1px solid black;
+  margin: 0 10px;
+  width: 150px;
+  color: white;
+}
+
+.left {
+  margin-right: 20px;
+  margin-bottom: 200px;
+}
+
+.right {
+  margin-left: 20px;
+  margin-bottom: 200px;
 }
 </style>
 
