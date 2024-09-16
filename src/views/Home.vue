@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>安多藏棋—久棋</h1>
     <div class="buttons">
       <button @click="goToGuide"><span>久棋规则介绍</span></button>
       <button @click="goToPlay"><span>面对面对战</span></button>
@@ -33,10 +32,12 @@ const goToAbout = () => {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url('../assets/wallpaper.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url('..\assets\HOME-Before.png');
+  background-size: cover; /* 确保图片铺满并保持比例 */
+  background-position: center; /* 图片居中显示 */
+  background-repeat: no-repeat; /* 防止图片重复 */
 }
+
 
 button {
   display: inline-block;
