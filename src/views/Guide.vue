@@ -1,14 +1,62 @@
 <template>
     <div class="guide">
-        <h1>Jiu-Chess Guide</h1>
-        <p>This section will guide you through the rules and strategies of Jiu-Chess.</p>
+        <div class="Guide-Button">
+            <!-- 按钮1 -->
+            <div class="button-with-text btn1">
+                <button @click="goToGuide('Guide01')" class="btn-with-bg-G"></button>
+                <div class="text-container">
+                    <span class="tibetan-text-G">ངོས་འཛིན་ཡུན་རིང་འགྲིལ་བ་རྨང་གཞི། </span>
+                    <span class="chinese-text-G">认识久棋基础</span>
+                </div>
+            </div>
+            <!-- 按钮2 -->
+            <div class="button-with-text btn2">
+                <button @click="goToGuide('Guide02')" class="btn-with-bg-G">
+                </button>
+                <div class="text-container">
+                    <span class="tibetan-text-G">ཡུན་རིང་འགྲིལ་བ་བསྐྲུན་པའི་འདུ་ཤེས། </span>
+                    <span class="chinese-text-G">久棋的开局意识
+                    </span>
+                </div>
+            </div>
+            <!-- 按钮3 -->
+            <div class="button-with-text btn3">
+                <button @click="goToGuide('Guide03')" class="btn-with-bg-G">
+                </button>
+                <div class="text-container">
+                    <span class="tibetan-text-G">བྱ་སྤྱོད་འགྲིལ་བ་ཐབས་ཇུས་འགྲེལ་བཤད། </span>
+                    <span class="chinese-text-G">行棋策略讲解
+                    </span>
+                </div>
+            </div>
+            <!-- 按钮4 -->
+            <div class="button-with-text btn4">
+                <button @click="goToGuide('Guide04')" class="btn-with-bg-G">
+                </button>
+                <div class="text-container">
+                    <span class="tibetan-text-G">ཡུན་རིང་འགྲིལ་བའི་བྱ་སྤྱོད་འགྲིལ་བ།  </span>
+                    <span class="chinese-text-G">行棋及胜利阵型
+                    </span>
+                </div>
+            </div>
+            <!-- 按钮5 -->
+            <div class="button-with-text btn5">
+                <button @click="goToGuide('Guide05')" class="btn-with-bg-G">
+                </button>
+                <div class="text-container">
+                    <span class="tibetan-text-G">ཡུན་རིང་འགྲིལ་བ་མཇུག་འབྲས། </span>
+                    <span class="chinese-text-G">终局判定及特殊阵型
+                    </span>
+                </div>
+            </div>
+        </div>
         <div class="button-container">
             <button @click="backToMenu" class="btn-with-bg">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+                <span class="tibetan-text">གཞུང་ཚིག</span>
                 <span class="chinese-text">回到主页</span>
             </button>
             <button @click="startGame" class="btn-with-bg">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+                <span class="tibetan-text">གཞུང་ཚིག</span>
                 <span class="chinese-text">开始游戏</span>
             </button>
         </div>
@@ -20,6 +68,29 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
+// 跳转到不同的指南页面
+const goToGuide = (guideId) => {
+    switch(guideId) {
+        case 'Guide01':
+            router.push({ name: 'Guide01' });
+            break;
+        case 'Guide02':
+            router.push({ name: 'Guide02' });
+            break;
+        case 'Guide03':
+            router.push({ name: 'Guide03' });
+            break;
+        case 'Guide04':
+            router.push({ name: 'Guide04' });
+            break;
+        case 'Guide05':
+            router.push({ name: 'Guide05' });
+            break;
+        default:
+            console.error('Unknown guide:', guideId);
+    }
+}
+
 const backToMenu = () => {
     router.push('/');
 }
@@ -30,10 +101,63 @@ const startGame = () => {
 </script>
 
 <style scoped>
-/* 按钮的通用样式 */
+/* 包含按钮和文本的容器 */
+.button-with-text {
+    position: absolute;
+}
+
+.button-with-text:HOVER{
+    transform: scale(1.1); /* 放大1.1倍 */
+}
+
+/* 文本容器的样式 */
+.text-container {
+    bottom: -70px;
+    height: 60px;
+    width: auto;
+    position: relative;
+    background-color: rgba(0, 44, 65, 0.8); /* 半透明深蓝色背景 */
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: column; /* 将中文和藏文文本垂直排列 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+/* 藏文文本样式 */
+.tibetan-text-G {
+    font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
+    font-size: 20px;
+    color: white;
+    margin-bottom: 4px; /* 调整藏文与中文文本之间的间距 */
+    text-align: center; /* 确保文本在容器中居中对齐 */
+}
+
+/* 中文文本样式 */
+.chinese-text-G {
+    font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
+    font-size: 20px;
+    color: white;
+    text-align: center; /* 确保文本在容器中居中对齐 */
+    margin-bottom: 4px; /* 调整文本与容器底部的间距 */
+}
+
+
+.btn-with-bg-G {
+    position: relative;
+    background-color: transparent; /* 白底转阴影 */
+    border: 0;
+    width: 180px;
+    height: 180px;
+    background-size: 50%;
+    border-radius: 50%;
+}
+
+
+/* 返回按钮的通用样式 */
 .btn-with-bg {
-    width: 200px;
-    height: 150px;
+    width: 160px;
+    height: 90px;
     background-color: #00384d; /* 深蓝色背景 */
     border-radius: 20px; /* 圆角 */
     display: flex;
@@ -44,39 +168,52 @@ const startGame = () => {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
     margin: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 放大动画的过渡效果 */
+    transition: all 0.3s ease;
     border: 5px solid #002c41; /* 深蓝色边框，宽度为5px */
 }
 
-/* 鼠标悬停时放大按钮效果 */
+
+/* 鼠标悬停时按钮放大效果 */
 .btn-with-bg:hover {
     transform: scale(1.1); /* 放大1.1倍 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 阴影增强 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
+    background-color: rgb(255, 192, 0); /* 深蓝色背景 */
 }
 
-/* 按钮中的中文文本样式 */
-.chinese-text {
-    background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色背景 */
-    padding: 10px 30px;
-    font-size: 20px;
-    color: white;
-    position: relative;
-    clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%); /* 内角效果 */
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+
 
 /* 藏文文本样式 */
 .tibetan-text {
-    font-family: 'Tibetan', sans-serif; /* 如果有藏文字体，可以指定 */
-    font-size: 24px;
-    color: #fff; /* 白色字体 */
-    margin-bottom: 10px;
+    font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
+    font-size: 20px;
+    color: white;
+    margin-bottom: 8px;
 }
+
+/* 中文文本样式 */
+.chinese-text {
+    background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色 */
+    padding: 6px 25px;
+    font-size: 16px;
+    color: white;
+    position: relative;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%); /* 内角形状 */
+    border-radius: 5px; /* 圆角内边界 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 文本居中 */
+}
+
 
 /* 设置按钮的父容器为横向排列 */
 .button-container {
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    gap: 20px; /* 按钮之间的间距 */
+}
+
+.Guide-Button {
     display: flex;
     justify-content: center; /* 水平居中 */
     gap: 20px; /* 按钮之间的间距 */
@@ -93,5 +230,48 @@ const startGame = () => {
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+}
+
+/* 背景图片及鼠标悬停效果 */
+.btn1 {
+    top: 10%;
+    left: 10%;
+    background-image: url('../assets/B01.png');
+    background-size: cover;
+}
+
+
+.btn2 {
+    bottom: 40%;
+    left: 28%;
+    background-image: url('../assets/B02.png');
+    background-size: cover;
+}
+
+.btn3 {
+    top: 10%;
+    left: 45%;
+    background-image: url('../assets/B03.png');
+    background-size: cover;
+}
+
+.btn4 {
+    bottom: 40%;
+    right: 28%;
+    background-image: url('../assets/B04.png');
+    background-size: cover;
+}
+
+.btn5 {
+    top: 10%;
+    right: 10%;
+    background-image: url('../assets/B05.png');
+    background-size: cover;
+}
+
+/* 鼠标悬停时放大效果 */
+.btn-with-bg:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 </style>
