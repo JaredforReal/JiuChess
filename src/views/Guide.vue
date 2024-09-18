@@ -32,8 +32,8 @@ const startGame = () => {
 <style scoped>
 /* 按钮的通用样式 */
 .btn-with-bg {
-    width: 200px;
-    height: 150px;
+    width: 180px;
+    height: 120px;
     background-color: #00384d; /* 深蓝色背景 */
     border-radius: 20px; /* 圆角 */
     display: flex;
@@ -43,21 +43,23 @@ const startGame = () => {
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
-    margin: 10px;
+    margin: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* 放大动画的过渡效果 */
     border: 5px solid #002c41; /* 深蓝色边框，宽度为5px */
 }
 
-/* 鼠标悬停时放大按钮效果 */
+/* 鼠标悬停时按钮放大效果 */
 .btn-with-bg:hover {
-    transform: scale(1.1); /* 放大1.1倍 */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 阴影增强 */
+  transform: scale(1.02); /* 放大1.1倍 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
+  background-color: skyblue; /* 深蓝色背景 */
 }
+
 
 /* 按钮中的中文文本样式 */
 .chinese-text {
     background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色背景 */
-    padding: 10px 30px;
+    padding: 10px 25px;
     font-size: 20px;
     color: white;
     position: relative;
@@ -70,7 +72,7 @@ const startGame = () => {
 /* 藏文文本样式 */
 .tibetan-text {
     font-family: 'Tibetan', sans-serif; /* 如果有藏文字体，可以指定 */
-    font-size: 24px;
+    font-size: 30px;
     color: #fff; /* 白色字体 */
     margin-bottom: 10px;
 }
