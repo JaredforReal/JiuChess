@@ -1,22 +1,22 @@
 <template>
   <div class="Board">
-    <div class="game-info left">
+    <div class="Status-bar">
       <div v-if="gamePhase === 'placing'">
-        <h3>布子阶段</h3>
-        <p>白子剩余 {{ whitePieceLeft }} 颗</p>
-        <p v-if="currentPlayer === 1">白子请落子</p>
+        <h3>
+          <span class="chinese-text">布子阶段</span><br>
+          <span class="tibetan-text">གཞུང་ཚིག</span>
+        </h3>        
       </div>
       <div v-else-if="gamePhase === 'moving'">
-        <h3>走子阶段</h3>
-        <p>白子请移动棋子</p>
+        <span class="chinese-text">走子阶段</span><br>
+        <span class="tibetan-text">གཞུང་ཚིག</span>
       </div>
       <div v-else-if="gamePhase === 'removing'">
-        <h3>走子阶段</h3>
-        <p>白子请移除黑子</p>
-        <p>待移除的棋子数：{{ piecessToRemove }}</p>
+        <span class="chinese-text">走子阶段</span><br>
+        <span class="tibetan-text">གཞུང་ཚིག</span>
       </div>
-    </div>
-
+    </div>    
+    
     <div class="chessboard">
       <div v-for="(row, rowIndex) in board" :key="rowIndex" class="row">
         <div v-for="(cell, colIndex) in row" :key="colIndex" class="cell"
@@ -28,42 +28,58 @@
         </div>
       </div>
     </div>
+    
+    <div class="game-info left">
+      <!-- 白棋玩家的图片 -->
+      <div class="player-container">
+        <img src="..\assets\Player-L.png" alt="Player L" class="player-L-image" />
+        <div class="circle-L" :class="{ 'highlight-Left': currentPlayer === 1 }"></div>
+      </div>
+      <div class="LeftInfo">
+        <div v-if="gamePhase === 'placing'">
+          <p>白子剩余 {{ whitePieceLeft }} 颗</p>
+        </div>
+        <div v-else-if="gamePhase === 'moving'">
+          <p>白子请移动棋子</p>
+        </div>
+        <div v-else-if="gamePhase === 'removing'">
+          <p>白子请移除黑子</p>
+          <p>待移除的棋子数：{{ piecessToRemove }}</p>
+        </div>
+      </div>
+    </div>
 
     <div class="game-info right">
-      <div v-if="gamePhase === 'placing'">
-        <h3>布子阶段</h3>
-        <p>黑子剩余 {{ blackPieceLeft }} 颗</p>
-        <p v-if="currentPlayer === 0">黑子请落子</p>
+      <!-- 黑棋玩家的图片 -->
+      <div class="player-container">
+        <img src="..\assets\Player-R.png" alt="Player R" class="player-R-image" />
+        <div class="circle-R" :class="{ 'highlight-Right': currentPlayer === 0 }"></div> <!-- 圆形 -->
       </div>
-      <div v-else-if="gamePhase === 'moving'">
-        <h3>走子阶段</h3>
-        <p>黑子请移动棋子</p>
-      </div>
-      <div v-else-if="gamePhase === 'removing'">
-        <h3>走子阶段</h3>
-        <p>黑子请移除白子</p>
-        <p>待移除的棋子数：{{ piecessToRemove }}</p>
+      <div class="RightInfo">
+        <div v-if="gamePhase === 'placing'">
+          <p>黑子剩余 {{ blackPieceLeft }} 颗</p>
+        </div>
+        <div v-else-if="gamePhase === 'moving'">
+          <p>黑子请移动棋子</p>
+        </div>
+        <div v-else-if="gamePhase === 'removing'">
+          <p>黑子请移除白子</p>
+          <p>待移除的棋子数：{{ piecessToRemove }}</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
+
 <style scoped>
 .Board {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.chessboard {
-  text-align: center;
-  width: 560px;
-  display: grid;
-  grid-template-columns: repeat(14, 40px);
-  grid-template-rows: repeat(14, 40px);
-  gap: 0;
-  background-color: #deb887;
-  border: 2px solid black;
+  margin: 0 auto;
+  max-width: 1000px;
 }
 
 .row {
@@ -103,22 +119,131 @@
   border: 2px solid red;
 }
 
-.game-info {
+.chessboard {
   text-align: center;
-  margin: 0 10px;
+  width: 560px;
+  display: grid;
+  grid-template-columns: repeat(14, 40px);
+  grid-template-rows: repeat(14, 40px);
+  gap: 0;
+  background-color: #deb887;
+  border: 2px solid black;
+}
+
+.Status-bar{
+  position: absolute;
+  border-radius: 20px; /* 圆角 */
+  left: -420px;
+  top: -12px;
+  text-align: center;      /* 水平居中 */
   width: 150px;
+  height: 90px;
+}
+
+
+.chinese-text {
+  margin-bottom: 10px; /* 调整与藏文之间的距离 */
   color: white;
 }
 
+.tibetan-text {
+  margin-top: 10px; /* 增加与汉字的距离 */
+  color: white;
+}
+
+.player-container {
+  position: relative;
+  width: 150px;
+  height: 200px; /* 控制容器高度，根据图片大小调整 */
+}
+
+.player-L-image {
+  width: auto;
+  height: 290px;
+  position: relative;
+  z-index: 1; /* 确保图片在上层 */
+}
+
+.player-R-image {
+  width: auto;
+  height: 310px;
+  position: relative;
+  z-index: 1; /* 确保图片在上层 */
+}
+
+.circle-L {
+  width: 220px; /* 圆的大小 */
+  height: 220px;
+  background-color:#F7AE07; /* 圆的颜色 */
+  border-radius: 50%;
+  position: absolute;
+  bottom: -80px; /* 控制圆的垂直位置，让它部分显示在图片下方 */
+  left: 23px;
+  z-index: 0; /* 确保圆在图片下层 */
+  border: 5px solid #042433; /* 添加轮廓 */
+}
+
+.circle-R {
+  width: 220px; /* 圆的大小 */
+  height: 220px;
+  background-color:#074059; /* 圆的颜色 */
+  border-radius: 50%;
+  position: absolute;
+  bottom: -108px; /* 控制圆的垂直位置，让它部分显示在图片下方 */
+  left: -8px;
+  z-index: 0; /* 确保圆在图片下层 */
+  border: 5px solid #042433; /* 添加轮廓 */
+}
+
+.highlight-Left {
+  box-shadow: 0 0 20px 10px #F7AE07; /* 黄色阴影 */
+}
+
+.highlight-Right {
+  box-shadow: 0 0 20px 10px blueviolet; /* 黄色阴影 */
+}
+
+
+.game-info {
+  position: absolute;
+  width: 150px;
+  color: white;
+  text-align: center;
+}
+
+.LeftInfo{
+  position:relative;
+  width: 250px;
+  top: 120px;
+  left: 10px;
+  background-color: #156082; /* 深蓝色背景 */
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #042433; /* 深蓝色边框，宽度为5px */
+}
+
+.RightInfo{
+  position:relative;
+  width: 250px;
+  top: 120px;
+  right: 10px;
+  background-color: #156082; /* 深蓝色背景 */
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #042433; /* 深蓝色边框，宽度为5px */
+}
+
 .left {
-  margin-right: 20px;
-  margin-bottom: 200px;
+  left: -400px;
+  top: 30%;
 }
 
 .right {
-  margin-left: 20px;
-  margin-bottom: 200px;
+  right: -300px;
+  top: 30%;
+
 }
+
 </style>
 
 <script setup>
