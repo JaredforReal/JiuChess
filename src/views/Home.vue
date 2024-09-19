@@ -41,7 +41,7 @@ const goToAbout = () => {
   align-items: center;
   justify-content: flex-end; /* 将内容放到页面底部 */
   height: 100vh;
-  background-image: url('..\assets\HOME-Before.png');
+  background-image: url('../assets/HOME-Before.png');
   background-size: cover; /* 确保图片铺满并保持比例 */
   background-position: center; /* 图片居中显示 */
   background-repeat: no-repeat; /* 防止图片重复 */
