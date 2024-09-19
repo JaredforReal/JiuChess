@@ -35,15 +35,15 @@
      <!-- 按钮部分 -->
      <div class="button-container">
       <button @click="goToNextPage" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">རྗེས་མའི་ཤོག་ངོས། </span> <!-- 藏文文本 -->
         <span class="chinese-text">下一页</span>
       </button>
       <button @click="goToGuide" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཕྱིར། </span> <!-- 藏文文本 -->
         <span class="chinese-text">返回</span>
       </button>
       <button @click="startGame" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཐོག་མར་རོལ་རྩེད། </span> <!-- 藏文文本 -->
         <span class="chinese-text">开始游戏</span>
       </button>
     </div>
@@ -127,6 +127,7 @@ const startGame = () => {
 
 /* 文本部分样式 */
 .guide-text {
+  color: white;
   flex: 1;
   padding-left: 20px;
 }
@@ -195,7 +196,7 @@ ol li {
 .btn-with-bg:hover {
   transform: scale(1.1); /* 放大1.1倍 */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
-  background-color: #FFC000; /* 深蓝色背景 */
+  background-color: #87ceeb; /* 深蓝色背景 */
 }
 
 /* 设置按钮的父容器为横向排列 */
@@ -204,5 +205,13 @@ ol li {
   justify-content: center; /* 水平居中 */
   gap: 20px; /* 按钮之间的间距 */
 }
-  </style>
-  
+</style>
+
+
+
+
+
+
+
+
+

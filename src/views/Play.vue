@@ -5,15 +5,15 @@
         </div>
         <div class="buttons">
             <button @click="backToMenu" class="btn-with-bg btn1">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+                <span class="tibetan-text">ཕྱིར། </span> <!-- 示例藏文文本 -->
                 <span class="chinese-text">回到主页</span>
             </button>
             <button @click="resetGame" class="btn-with-bg btn">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+                <span class="tibetan-text">བསྐྱར་དུ་འགོ་རྩོམ་པ། </span> <!-- 示例藏文文本 -->
                 <span class="chinese-text">重新开始</span>
             </button>
             <button @click="goToGuide" class="btn-with-bg btn2">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+                <span class="tibetan-text">སྒྲིག་ལམ་ངོ་སྤྲོད། </span> <!-- 示例藏文文本 -->
                 <span class="chinese-text">规则介绍</span>
             </button>
         </div>
@@ -57,18 +57,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px; /* 按钮之间的间距 */
+    gap: 80px; /* 按钮之间的间距 */
 }
 
 /* 通用按钮样式 */
 .btn-with-bg {
-    width: 160px;
+    width: 140px;
     height: 90px;
     background-color: #00384d; /* 深蓝色背景 */
     border-radius: 20px; /* 圆角 */
@@ -87,7 +88,7 @@ body {
 /* 藏文文本样式 */
 .tibetan-text {
     font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     margin-bottom: 8px;
 }
@@ -109,6 +110,6 @@ body {
 .btn-with-bg:hover {
     transform: scale(1.1); /* 放大1.1倍 */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
-    background-color: #FFC000; /* 深蓝色背景 */
+    background-color: skyblue; /* 深蓝色背景 */
 }
 </style>

@@ -5,7 +5,7 @@
         <h3>
           <span class="chinese-text">布子阶段</span><br>
           <span class="tibetan-text">གཞུང་ཚིག</span>
-        </h3>        
+        </h3>
       </div>
       <div v-else-if="gamePhase === 'moving'">
         <span class="chinese-text">走子阶段</span><br>
@@ -15,8 +15,8 @@
         <span class="chinese-text">走子阶段</span><br>
         <span class="tibetan-text">གཞུང་ཚིག</span>
       </div>
-    </div>    
-    
+    </div>
+
     <div class="chessboard">
       <div v-for="(row, rowIndex) in board" :key="rowIndex" class="row">
         <div v-for="(cell, colIndex) in row" :key="colIndex" class="cell"
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="game-info left">
       <!-- 白棋玩家的图片 -->
       <div class="player-container">
@@ -41,6 +41,7 @@
         </div>
         <div v-else-if="gamePhase === 'moving'">
           <p>白子请移动棋子</p>
+          <p v-if="isWhiteFlying">白子飞行模式</p>
         </div>
         <div v-else-if="gamePhase === 'removing'">
           <p>白子请移除黑子</p>
@@ -61,6 +62,7 @@
         </div>
         <div v-else-if="gamePhase === 'moving'">
           <p>黑子请移动棋子</p>
+          <p v-if="isBlackFlying">黑子飞行模式</p>
         </div>
         <div v-else-if="gamePhase === 'removing'">
           <p>黑子请移除白子</p>
@@ -70,7 +72,6 @@
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .Board {
@@ -87,9 +88,9 @@
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
-  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,85 +123,112 @@
 .chessboard {
   text-align: center;
   width: 560px;
+  height: 560px;
   display: grid;
-  grid-template-columns: repeat(14, 40px);
-  grid-template-rows: repeat(14, 40px);
+  grid-template-columns: repeat(14, 38px);
+  grid-template-rows: repeat(14, 38px);
   gap: 0;
-  background-color: #deb887;
-  border: 2px solid black;
+  background-image: url('../assets/Chessboard.png');
+  background-size: 125%;
+  background-repeat: no-repeat;
+  background-position: -70px -70px;
+  border: 1px solid black;
+  margin-top: 10px;
 }
 
-.Status-bar{
+.Status-bar {
   position: absolute;
-  border-radius: 20px; /* 圆角 */
-  left: -420px;
-  top: -12px;
-  text-align: center;      /* 水平居中 */
+  border-radius: 20px;
+  /* 圆角 */
+  left: -400px;
+  top: -5px;
+  text-align: center;
+  /* 水平居中 */
   width: 150px;
-  height: 90px;
+  height: 100px;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
 
 .chinese-text {
-  margin-bottom: 10px; /* 调整与藏文之间的距离 */
+  font-size: 25px;
+  margin-bottom: 10px;
+  /* 调整与藏文之间的距离 */
   color: white;
 }
 
 .tibetan-text {
-  margin-top: 10px; /* 增加与汉字的距离 */
+  margin-top: 10px;
+  /* 增加与汉字的距离 */
   color: white;
 }
 
 .player-container {
   position: relative;
   width: 150px;
-  height: 200px; /* 控制容器高度，根据图片大小调整 */
+  height: 200px;
+  /* 控制容器高度，根据图片大小调整 */
 }
 
 .player-L-image {
   width: auto;
   height: 290px;
   position: relative;
-  z-index: 1; /* 确保图片在上层 */
+  z-index: 1;
+  /* 确保图片在上层 */
 }
 
 .player-R-image {
   width: auto;
   height: 310px;
   position: relative;
-  z-index: 1; /* 确保图片在上层 */
+  z-index: 1;
+  /* 确保图片在上层 */
 }
 
 .circle-L {
-  width: 220px; /* 圆的大小 */
+  width: 220px;
+  /* 圆的大小 */
   height: 220px;
-  background-color:#F7AE07; /* 圆的颜色 */
+  background-color: #F7AE07;
+  /* 圆的颜色 */
   border-radius: 50%;
   position: absolute;
-  bottom: -80px; /* 控制圆的垂直位置，让它部分显示在图片下方 */
+  bottom: -80px;
+  /* 控制圆的垂直位置，让它部分显示在图片下方 */
   left: 23px;
-  z-index: 0; /* 确保圆在图片下层 */
-  border: 5px solid #042433; /* 添加轮廓 */
+  z-index: 0;
+  /* 确保圆在图片下层 */
+  border: 5px solid #042433;
+  /* 添加轮廓 */
 }
 
 .circle-R {
-  width: 220px; /* 圆的大小 */
+  width: 220px;
+  /* 圆的大小 */
   height: 220px;
-  background-color:#074059; /* 圆的颜色 */
+  background-color: #074059;
+  /* 圆的颜色 */
   border-radius: 50%;
   position: absolute;
-  bottom: -108px; /* 控制圆的垂直位置，让它部分显示在图片下方 */
+  bottom: -108px;
+  /* 控制圆的垂直位置，让它部分显示在图片下方 */
   left: -8px;
-  z-index: 0; /* 确保圆在图片下层 */
-  border: 5px solid #042433; /* 添加轮廓 */
+  z-index: 0;
+  /* 确保圆在图片下层 */
+  border: 5px solid #042433;
+  /* 添加轮廓 */
 }
 
 .highlight-Left {
-  box-shadow: 0 0 20px 10px #F7AE07; /* 黄色阴影 */
+  box-shadow: 0 0 20px 10px #F7AE07;
+  /* 黄色阴影 */
 }
 
 .highlight-Right {
-  box-shadow: 0 0 20px 10px blueviolet; /* 黄色阴影 */
+  box-shadow: 0 0 20px 10px skyblue;
+  /* 蓝色阴影 */
 }
 
 
@@ -211,43 +239,52 @@
   text-align: center;
 }
 
-.LeftInfo{
-  position:relative;
+.LeftInfo {
+  position: relative;
   width: 250px;
   top: 120px;
   left: 10px;
-  background-color: #156082; /* 深蓝色背景 */
+  background-color: orange;
+  /* 深蓝色背景 */
   justify-content: center;
   align-items: center;
-  border: 3px solid #042433; /* 深蓝色边框，宽度为5px */
+  border: 3px solid #042433;
+  /* 深蓝色边框，宽度为5px */
+  border-radius: 20px;
+  /* 圆角 */
+  font-size: 18px;
 }
 
-.RightInfo{
-  position:relative;
+.RightInfo {
+  position: relative;
   width: 250px;
   top: 120px;
   right: 10px;
-  background-color: #156082; /* 深蓝色背景 */
+  background-color: #156082;
+  /* 深蓝色背景 */
   justify-content: center;
   align-items: center;
-  border: 3px solid #042433; /* 深蓝色边框，宽度为5px */
+  border: 3px solid #042433;
+  /* 深蓝色边框，宽度为5px */
+  border-radius: 20px;
+  /* 圆角 */
+  font-size: 18px;
 }
 
 .left {
-  left: -400px;
+  left: -370px;
   top: 30%;
 }
 
 .right {
-  right: -300px;
+  right: -270px;
   top: 30%;
 
 }
-
 </style>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const size = 14;
 const board = ref(Array.from({ length: size }, () => Array(size).fill(null)));
@@ -266,10 +303,13 @@ const selectedPiece = ref(null);
 
 const piecessToRemove = ref(0);
 
+const isWhiteFlying = computed(() => gamePhase.value === 'moving' && whitePieceLeft.value <= size);
+const isBlackFlying = computed(() => gamePhase.value === 'moving' && blackPieceLeft.value <= size);
+
 const initializeGame = () => {
   const center = Math.floor(size / 2);
-  board.value[center][center] = 1;
-  board.value[center - 1][center - 1] = 0;
+  board.value[center - 1][center] = 1;
+  board.value[center][center - 1] = 0;
   whitePieceLeft.value--;
   blackPieceLeft.value--;
   totalMoves.value += 2;
@@ -281,6 +321,8 @@ const enterMovingPhase = () => {
   board.value[center][center] = null;
   board.value[center - 1][center - 1] = null;
   gamePhase.value = 'moving';
+  whitePieceLeft.value = 97;
+  blackPieceLeft.value = 97;
 };
 
 const isSelected = (row, col) => {
@@ -294,6 +336,10 @@ const canMoveTo = (row, col) => {
 
   const [selectedRow, selectedCol] = selectedPiece.value;
   const opponent = currentPlayer.value === 1 ? 0 : 1;
+
+  if ((currentPlayer.value === 1 && isWhiteFlying.value) || (currentPlayer.value === 0 && isBlackFlying.value)) {
+    return board.value[row][col] === null;
+  }
 
   const isAdjacent =
     (col === selectedCol && Math.abs(row - selectedRow) === 1)
@@ -357,6 +403,11 @@ const movePiece = (row, col) => {
       const jumpedRow = (row + selectedRow) / 2;
       const jumpedCol = (col + selectedCol) / 2;
       board.value[jumpedRow][jumpedCol] = null;
+      if (currentPlayer.value === 1) {
+        blackPieceLeft.value--;
+      } else {
+        whitePieceLeft.value--;
+      }
     }
 
     board.value[selectedRow][selectedCol] = null;
@@ -391,6 +442,11 @@ const movePiece = (row, col) => {
 const removePiece = (row, col) => {
   if (board.value[row][col] === (currentPlayer.value === 1 ? 0 : 1)) {
     board.value[row][col] = null;
+    if (currentPlayer.value === 1) {
+      blackPieceLeft.value--;
+    } else {
+      whitePieceLeft.value--;
+    }
     piecessToRemove.value--;
 
     if (piecessToRemove.value === 0) {

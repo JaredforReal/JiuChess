@@ -33,19 +33,19 @@
     <!-- 按钮部分 -->
     <div class="button-container">
       <button @click="goToUpPage" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">སྟེང་ཤོག་ངོས། </span> <!-- 藏文文本 -->
         <span class="chinese-text">上一页</span>
       </button>
       <button @click="goToNextPage" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">རྗེས་མའི་ཤོག་ངོས།</span> <!-- 藏文文本 -->
         <span class="chinese-text">下一页</span>
       </button>
       <button @click="goToGuide" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཕྱིར།</span> <!-- 藏文文本 -->
         <span class="chinese-text">返回</span>
       </button>
       <button @click="startGame" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཐོག་མར་རོལ་རྩེད།</span> <!-- 藏文文本 -->
         <span class="chinese-text">开始游戏</span>
       </button>
     </div>
@@ -122,13 +122,16 @@ const startGame = () => {
 }
 
 .strategy-image {
+  display: block; /* 使图片成为块级元素 */
+  margin: 15px auto; /* 自动水平居中 */
+  background-image: transparent;
   width: 300px;
   height: auto;
-  margin: 15px 0;
   border-radius: 10px;
 }
 
 .guide-text {
+  color: white;
   font-size: medium;
   text-align: left;
   padding: 20px;
@@ -138,44 +141,56 @@ const startGame = () => {
   margin-top: 15px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
+/* 通用按钮样式 */
 .btn-with-bg {
   width: 160px;
   height: 90px;
-  background-color: #00384d;
-  border-radius: 20px;
+  background-color: #00384d; /* 深蓝色背景 */
+  border-radius: 20px; /* 圆角 */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: white;
   margin: 10px;
   transition: all 0.3s ease;
+  border: 5px solid #002c41; /* 深蓝色边框，宽度为5px */
 }
 
+/* 藏文文本样式 */
 .tibetan-text {
-  font-family: 'Tibetan', sans-serif;
+  font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
   font-size: 20px;
+  color: white;
   margin-bottom: 8px;
 }
 
+/* 中文文本样式 */
 .chinese-text {
-  background: linear-gradient(to right, #e06b42, #b24312);
+  background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色 */
   padding: 6px 25px;
   font-size: 16px;
-  clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%);
-  border-radius: 5px;
+  color: white;
+  position: relative;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%); /* 内角形状 */
+  border-radius: 5px; /* 圆角内边界 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center; /* 文本居中 */
 }
 
+/* 鼠标悬停时按钮放大效果 */
 .btn-with-bg:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  background-color: #FFC000;
+  transform: scale(1.1); /* 放大1.1倍 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
+  background-color: #87ceeb; /* 深蓝色背景 */
+}
+
+/* 设置按钮的父容器为横向排列 */
+.button-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  gap: 20px; /* 按钮之间的间距 */
 }
 </style>
