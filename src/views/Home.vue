@@ -2,15 +2,15 @@
   <div class="home">
     <div class="buttons">
       <button @click="goToGuide" class="btn-with-bg btn-guide">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+        <span class="tibetan-text">སྒྲིག་ལམ་ངོ་སྤྲོད། </span> <!-- 示例藏文文本 -->
         <span class="chinese-text">规则介绍</span>
       </button>
       <button @click="goToPlay" class="btn-with-bg btn-play">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+        <span class="tibetan-text">མདུན་དུ་མདུན་དུ་ད། </span> <!-- 示例藏文文本 -->
         <span class="chinese-text">面对面对战</span>
       </button>
       <button @click="goToAbout" class="btn-with-bg btn-about">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+        <span class="tibetan-text">རིག་གནས་ངོ་སྤྲོད། </span> <!-- 示例藏文文本 -->
         <span class="chinese-text">文化介绍</span>
       </button>
     </div>
@@ -75,6 +75,7 @@ const goToAbout = () => {
 
 .tibetan-text {
   font-family: 'Tibetan', sans-serif; /* 替换为适合的藏文字体 */
+  font-size: 20px;
   font-size: 32px;
   color: #fff;
   margin-bottom: 10px;

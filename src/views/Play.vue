@@ -5,15 +5,15 @@
         </div>
         <div class="buttons">
             <button @click="backToMenu" class="btn-with-bg btn1">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+                <span class="tibetan-text">ཕྱིར། </span> <!-- 示例藏文文本 -->
                 <span class="chinese-text">回到主页</span>
             </button>
             <button @click="resetGame" class="btn-with-bg btn">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+                <span class="tibetan-text">བསྐྱར་དུ་འགོ་རྩོམ་པ། </span> <!-- 示例藏文文本 -->
                 <span class="chinese-text">重新开始</span>
             </button>
             <button @click="goToGuide" class="btn-with-bg btn2">
-                <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 示例藏文文本 -->
+                <span class="tibetan-text">སྒྲིག་ལམ་ངོ་སྤྲོད། </span> <!-- 示例藏文文本 -->
                 <span class="chinese-text">规则介绍</span>
             </button>
         </div>
@@ -88,7 +88,7 @@ body {
 /* 藏文文本样式 */
 .tibetan-text {
     font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     margin-bottom: 8px;
 }

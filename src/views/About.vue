@@ -75,11 +75,19 @@
             </div>
             <div class="button-container">
                 <button @click="backToMenu" class="btn-with-bg">
+<<<<<<< HEAD
+                    <span class="tibetan-text">ཕྱིར། </span> <!-- 藏文文本 -->
+                    <span class="chinese-text">回到主页</span>
+                </button>
+                <button @click="startGame" class="btn-with-bg">
+                    <span class="tibetan-text">ཐོག་མར་རོལ་རྩེད། </span> <!-- 藏文文本 -->
+=======
                     <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
                     <span class="chinese-text">回到主页</span>
                 </button>
                 <button @click="startGame" class="btn-with-bg">
                     <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+>>>>>>> 2deed6aa0f1a9a94136ed10c75ef164358e3ad1a
                     <span class="chinese-text">开始游戏</span>
                 </button>
             </div>
@@ -214,6 +222,7 @@
 .tibetan-text {
     font-family: 'Tibetan', sans-serif;
     /* 如果有藏文字体，可以指定 */
+    font-size: 20px;
     font-size: 30px;
     color: #fff;
     /* 白色字体 */

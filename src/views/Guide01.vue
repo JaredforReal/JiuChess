@@ -35,15 +35,15 @@
      <!-- 按钮部分 -->
      <div class="button-container">
       <button @click="goToNextPage" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">རྗེས་མའི་ཤོག་ངོས། </span> <!-- 藏文文本 -->
         <span class="chinese-text">下一页</span>
       </button>
       <button @click="goToGuide" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཕྱིར། </span> <!-- 藏文文本 -->
         <span class="chinese-text">返回</span>
       </button>
       <button @click="startGame" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཐོག་མར་རོལ་རྩེད། </span> <!-- 藏文文本 -->
         <span class="chinese-text">开始游戏</span>
       </button>
     </div>
@@ -127,6 +127,7 @@ const startGame = () => {
 
 /* 文本部分样式 */
 .guide-text {
+  color: white;
   flex: 1;
   padding-left: 20px;
 }

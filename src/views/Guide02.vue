@@ -18,32 +18,38 @@
 
       <!-- 文本介绍部分 -->
       <div class="guide-text">
+        <h3>1.</h3>
         <p>
-          <br />
-          布局时围绕着中间棋子，要尽量让己方棋子合拢以便形成“方”，并尽量阻止对方“成方”。
-          <br />黑白双方按各自的思路在棋盘上布满棋子，落子无悔。
-          久棋从开局布局阶段到对局走子阶段，对棋阵模式有较高的依赖性。
-          <br />根据久棋规则，形成“方”具有很高的战略价值，一方面能够成为摧垮对方的一枚棋子；另一方面，形成有效的防守阵型。
-        </p>
+          布局时，围绕着中间棋子，棋手需要尽量让己方棋子聚集，合拢为一个整体，以便形成“方”形阵型。<br />这种“成方”的策略不仅能够帮助己方更好地掌控棋局，还能够在对抗中占据主动。同时，<br />棋手也要时刻注意对方的布局动向，尽可能阻止对方形成“方”，从而打乱对方的战略布局，削弱其攻防能力。
+          </p>
+          <h3>2.</h3>
+          <p>
+          在久棋的对局中，黑白双方按照各自的思路和策略在棋盘上布满棋子。每一步落子都至关重要，落子无悔，<br />意味着每个决定都不可更改，这进一步增加了对局的紧张感与策略性。久棋从开局的布<br />局阶段到对局的走子阶段，棋手对棋阵模式的依赖性非常高，成功的阵型往往决定了对局的最终走向。
+          </p>
+          <h3>3.</h3>
+          <p>
+          根据久棋的规则，形成“方”形阵型在战略上具有极高的价值。这种阵型不仅能够在进攻时起到至关重要的作用，<br />成为摧垮对方防线的关键一环；另一方面，成“方”也有助于棋手构建有效的防守阵<br />型，使己方阵线更加稳固，减少被对方突破的可能性。通过灵活运用“方”形阵型，棋手能够在攻守转换中迅速调整策略，<br />进一步提高己方在对局中的优势。
+          </p>
+          
       </div>
     </div>
 
     <!-- 按钮部分 -->
     <div class="button-container">
       <button @click="goToUpPage" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">སྟེང་ཤོག་ངོས། </span> <!-- 藏文文本 -->
         <span class="chinese-text">上一页</span>
       </button>
       <button @click="goToNextPage" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">རྗེས་མའི་ཤོག་ངོས།</span> <!-- 藏文文本 -->
         <span class="chinese-text">下一页</span>
       </button>
       <button @click="goToGuide" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཕྱིར།</span> <!-- 藏文文本 -->
         <span class="chinese-text">返回</span>
       </button>
       <button @click="startGame" class="btn-with-bg">
-        <span class="tibetan-text">གཞུང་ཚིག</span> <!-- 藏文文本 -->
+        <span class="tibetan-text">ཐོག་མར་རོལ་རྩེད།</span> <!-- 藏文文本 -->
         <span class="chinese-text">开始游戏</span>
       </button>
     </div>
@@ -76,15 +82,15 @@ const startGame = () => {
 <style scoped>
 /* 整体页面背景及布局样式 */
 .Guide02 {
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-image: url('../assets/Play-BackGround.png');
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 /* 标题部分样式 */
@@ -115,7 +121,18 @@ const startGame = () => {
 .content {
   display: flex;
   justify-content: space-between;
+  align-items: center;       /* 垂直居中内容 */
   margin-top: 20px;
+  min-height: 500px;         /* 设置容器最小高度 */
+}
+
+
+/* 棋盘图片容器样式 */
+.chess-image {
+  display: flex;
+  justify-content: center;  /* 水平居中 */
+  align-items: center;      /* 垂直居中 */
+  height: 100%;             /* 使容器高度撑满可用空间 */
 }
 
 /* 棋盘图片样式 */
@@ -124,12 +141,15 @@ const startGame = () => {
   height: auto;
   border-radius: 10px;
   border: 2px solid #fff;
+  max-height: 100%;         /* 确保图片不会超过容器高度 */
 }
+
 
 /* 文本部分样式 */
 .guide-text {
+  color: white;
   font-size: medium;
-  text-align: center;
+  text-align: left;
   flex: 1;
   padding-left: 20px;
 }

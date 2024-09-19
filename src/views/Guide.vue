@@ -6,7 +6,7 @@
                 <button @click="goToGuide('Guide01')" class="btn-with-bg-G"></button>
                 <div class="text-container">
                     <span class="tibetan-text-G">ངོས་འཛིན་ཡུན་རིང་འགྲིལ་བ་རྨང་གཞི། </span>
-                    <span class="chinese-text-G">认识久棋基础</span>
+                    <span class="chinese-text-G">01-认识久棋基础</span>
                 </div>
             </div>
             <!-- 按钮2 -->
@@ -15,7 +15,7 @@
                 </button>
                 <div class="text-container">
                     <span class="tibetan-text-G">ཡུན་རིང་འགྲིལ་བ་བསྐྲུན་པའི་འདུ་ཤེས། </span>
-                    <span class="chinese-text-G">久棋的开局意识</span>
+                    <span class="chinese-text-G">02-久棋的开局意识</span>
                 </div>
             </div>
             <!-- 按钮3 -->
@@ -24,7 +24,7 @@
                 </button>
                 <div class="text-container">
                     <span class="tibetan-text-G">བྱ་སྤྱོད་འགྲིལ་བ་ཐབས་ཇུས་འགྲེལ་བཤད། </span>
-                    <span class="chinese-text-G">行棋策略讲解</span>
+                    <span class="chinese-text-G">03-行棋策略讲解</span>
                 </div>
             </div>
             <!-- 按钮4 -->
@@ -33,7 +33,7 @@
                 </button>
                 <div class="text-container">
                     <span class="tibetan-text-G">ཡུན་རིང་འགྲིལ་བའི་བྱ་སྤྱོད་འགྲིལ་བ། </span>
-                    <span class="chinese-text-G">行棋及胜利阵型</span>
+                    <span class="chinese-text-G">04-行棋及胜利阵型</span>
                 </div>
             </div>
             <!-- 按钮5 -->
@@ -42,17 +42,17 @@
                 </button>
                 <div class="text-container">
                     <span class="tibetan-text-G">ཡུན་རིང་འགྲིལ་བ་མཇུག་འབྲས། </span>
-                    <span class="chinese-text-G">终局判定及特殊阵型</span>
+                    <span class="chinese-text-G">05-终局判定及特殊阵型</span>
                 </div>
             </div>
         </div>
         <div class="button-container">
             <button @click="backToMenu" class="btn-with-bg">
-                <span class="tibetan-text">གཞུང་ཚིག</span>
+                <span class="tibetan-text">ཕྱིར།</span>
                 <span class="chinese-text">回到主页</span>
             </button>
             <button @click="startGame" class="btn-with-bg">
-                <span class="tibetan-text">གཞུང་ཚིག</span>
+                <span class="tibetan-text">ཐོག་མར་རོལ་རྩེད། </span>
                 <span class="chinese-text">开始游戏</span>
             </button>
         </div>
@@ -65,9 +65,20 @@
     position: absolute;
 }
 
-.button-with-text:HOVER {
+/* 鼠标悬停时文本容器的背景颜色变化 */
+.button-with-text:hover .text-container {
     transform: scale(1.1);
-    /* 放大1.1倍 */
+    background-color: rgba(255, 193, 7, 0.8); /* 半透明的金黄色背景 */
+    box-shadow: 0 4px 10px rgba(247, 174, 7, 0.8); /* 完整的box-shadow属性 */
+    transition: transform 0.3s ease, background-color 0.6s ease, box-shadow 0.3s ease;
+}
+
+/* 鼠标悬停时文本容器和按钮背景同时发生变化 */
+.button-with-text:hover .btn-with-bg-G {
+    transform: scale(1.2);
+    background-color: rgba(255, 193, 7, 0.2); /* 半透明的金黄色背景 */
+    box-shadow: 0 4px 10px rgba(247, 174, 7, 0.8); /* 完整的box-shadow属性 */
+    transition: transform 0.3s ease, background-color 0.6s ease, box-shadow 0.3s ease;
 }
 
 /* 文本容器的样式 */
@@ -76,7 +87,9 @@
     height: 60px;
     width: auto;
     position: relative;
-    background-color: rgba(0, 44, 65, 0.8);
+    background-color: #00384d;
+    border: 3px solid #002c41;
+
     /* 半透明深蓝色背景 */
     border-radius: 10px;
     display: flex;
@@ -92,7 +105,7 @@
 .tibetan-text-G {
     font-family: 'Tibetan', sans-serif;
     /* 你需要引入合适的藏文字体 */
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     margin-bottom: 4px;
     /* 调整藏文与中文文本之间的间距 */
@@ -104,7 +117,7 @@
 .chinese-text-G {
     font-family: 'Tibetan', sans-serif;
     /* 你需要引入合适的藏文字体 */
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     text-align: center;
     /* 确保文本在容器中居中对齐 */
@@ -112,18 +125,17 @@
     /* 调整文本与容器底部的间距 */
 }
 
-
+/* 按钮默认样式 */
 .btn-with-bg-G {
     position: relative;
     background-color: transparent;
-    /* 白底转阴影 */
     border: 0;
     width: 180px;
     height: 180px;
     background-size: 50%;
     border-radius: 50%;
+    overflow: hidden; /* 确保遮罩层不超出按钮 */
 }
-
 
 /* 返回按钮的通用样式 */
 .btn-with-bg {
@@ -145,6 +157,8 @@
     /* 放大动画的过渡效果 */
     border: 5px solid #002c41;
     /* 深蓝色边框，宽度为5px */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 放大动画的过渡效果 */
+    border: 5px solid #002c41; /* 深蓝色边框，宽度为5px */
 }
 
 /* 鼠标悬停时按钮放大效果 */
@@ -155,6 +169,9 @@
     /* 增加阴影，使放大效果更明显 */
     background-color: skyblue;
     /* 深蓝色背景 */
+  transform: scale(1.02); /* 放大1.1倍 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
+  background-color: skyblue; /* 深蓝色背景 */
 }
 
 
@@ -162,6 +179,9 @@
 .chinese-text {
     background: linear-gradient(to right, #e06b42, #b24312);
     /* 渐变橙色背景 */
+    padding: 10px 25px;
+    font-size: 16px;
+    background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色背景 */
     padding: 10px 25px;
     font-size: 20px;
     color: white;
@@ -189,6 +209,10 @@
 .tibetan-text {
     font-family: 'Tibetan', sans-serif;
     /* 如果有藏文字体，可以指定 */
+    font-size: 16px;
+    color: #fff;
+    /* 白色字体 */
+    font-family: 'Tibetan', sans-serif; /* 如果有藏文字体，可以指定 */
     font-size: 30px;
     color: #fff;
     /* 白色字体 */
@@ -234,7 +258,6 @@
     background-image: url('../assets/B01.png');
     background-size: cover;
 }
-
 
 .btn2 {
     bottom: 40%;
