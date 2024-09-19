@@ -91,6 +91,9 @@
   width: 50px;
   height: 50px;
   /* border: 1px solid black; */
+  width: 38px;
+  height: 38px;
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,6 +127,7 @@
   text-align: center;
   width: 560px;
   height: 560px;
+  width: 532px;
   display: grid;
   grid-template-columns: repeat(14, 38px);
   grid-template-rows: repeat(14, 38px);
@@ -132,6 +136,7 @@
   background-size: 125%;
   background-repeat: no-repeat;
   background-position: -70px -70px;
+  background-color: #deb887;
   border: 1px solid black;
   margin-top: 10px;
 }

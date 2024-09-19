@@ -76,6 +76,7 @@ const goToAbout = () => {
 .tibetan-text {
   font-family: 'Tibetan', sans-serif; /* 替换为适合的藏文字体 */
   font-size: 20px;
+  font-size: 32px;
   color: #fff;
   margin-bottom: 10px;
 }

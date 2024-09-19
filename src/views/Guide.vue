@@ -157,6 +157,8 @@
     /* 放大动画的过渡效果 */
     border: 5px solid #002c41;
     /* 深蓝色边框，宽度为5px */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 放大动画的过渡效果 */
+    border: 5px solid #002c41; /* 深蓝色边框，宽度为5px */
 }
 
 /* 鼠标悬停时按钮放大效果 */
@@ -167,6 +169,9 @@
     /* 增加阴影，使放大效果更明显 */
     background-color: skyblue;
     /* 深蓝色背景 */
+  transform: scale(1.02); /* 放大1.1倍 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
+  background-color: skyblue; /* 深蓝色背景 */
 }
 
 
@@ -176,6 +181,9 @@
     /* 渐变橙色背景 */
     padding: 10px 25px;
     font-size: 16px;
+    background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色背景 */
+    padding: 10px 25px;
+    font-size: 20px;
     color: white;
     margin-bottom: 8px;
 }
@@ -204,6 +212,9 @@
     font-size: 16px;
     color: #fff;
     /* 白色字体 */
+    font-family: 'Tibetan', sans-serif; /* 如果有藏文字体，可以指定 */
+    font-size: 30px;
+    color: #fff; /* 白色字体 */
     margin-bottom: 10px;
 }
 
