@@ -128,7 +128,7 @@
   grid-template-columns: repeat(14, 38px);
   grid-template-rows: repeat(14, 38px);
   gap: 0;
-  background-image: url('../assets/Chessboard.png');
+  background-image: url('../assets/Board.png');
   background-size: 125%;
   background-repeat: no-repeat;
   background-position: -70px -70px;

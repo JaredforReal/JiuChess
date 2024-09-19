@@ -12,7 +12,7 @@
     <div class="content">
       <!-- 棋盘图片 -->
       <div class="chess-image">
-        <img src="..\assets\ChessBoard.png" alt="Chess Board" />
+        <img src="..\assets\Board.png" alt="Chess Board" />
       </div>
 
       <!-- 文本介绍部分 -->
@@ -32,8 +32,8 @@
         </ol>
       </div>
     </div>
-     <!-- 按钮部分 -->
-     <div class="button-container">
+    <!-- 按钮部分 -->
+    <div class="button-container">
       <button @click="goToNextPage" class="btn-with-bg">
         <span class="tibetan-text">རྗེས་མའི་ཤོག་ངོས། </span> <!-- 藏文文本 -->
         <span class="chinese-text">下一页</span>
@@ -50,7 +50,7 @@
   </div>
 </template>
 
-  
+
 <script setup>
 import { useRouter } from 'vue-router';
 
@@ -72,9 +72,9 @@ const startGame = () => {
 }
 </script>
 
-  
-  <style scoped>
-  /* 设置页面背景图片 */
+
+<style scoped>
+/* 设置页面背景图片 */
 .Guide01 {
   display: flex;
   flex-direction: column;
@@ -86,6 +86,7 @@ const startGame = () => {
   background-repeat: no-repeat;
   overflow: hidden;
 }
+
 /* 标题部分样式 */
 .header {
   background-color: #e06b42;
@@ -157,8 +158,10 @@ ol li {
 .btn-with-bg {
   width: 160px;
   height: 90px;
-  background-color: #00384d; /* 深蓝色背景 */
-  border-radius: 20px; /* 圆角 */
+  background-color: #00384d;
+  /* 深蓝色背景 */
+  border-radius: 20px;
+  /* 圆角 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,12 +171,14 @@ ol li {
   color: white;
   margin: 10px;
   transition: all 0.3s ease;
-  border: 5px solid #002c41; /* 深蓝色边框，宽度为5px */
+  border: 5px solid #002c41;
+  /* 深蓝色边框，宽度为5px */
 }
 
 /* 藏文文本样式 */
 .tibetan-text {
-  font-family: 'Tibetan', sans-serif; /* 你需要引入合适的藏文字体 */
+  font-family: 'Tibetan', sans-serif;
+  /* 你需要引入合适的藏文字体 */
   font-size: 20px;
   color: white;
   margin-bottom: 8px;
@@ -181,37 +186,37 @@ ol li {
 
 /* 中文文本样式 */
 .chinese-text {
-  background: linear-gradient(to right, #e06b42, #b24312); /* 渐变橙色 */
+  background: linear-gradient(to right, #e06b42, #b24312);
+  /* 渐变橙色 */
   padding: 6px 25px;
   font-size: 16px;
   color: white;
   position: relative;
-  clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%); /* 内角形状 */
-  border-radius: 5px; /* 圆角内边界 */
+  clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%);
+  /* 内角形状 */
+  border-radius: 5px;
+  /* 圆角内边界 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center; /* 文本居中 */
+  text-align: center;
+  /* 文本居中 */
 }
 
 /* 鼠标悬停时按钮放大效果 */
 .btn-with-bg:hover {
-  transform: scale(1.1); /* 放大1.1倍 */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
-  background-color: #87ceeb; /* 深蓝色背景 */
+  transform: scale(1.1);
+  /* 放大1.1倍 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  /* 增加阴影，使放大效果更明显 */
+  background-color: #87ceeb;
+  /* 深蓝色背景 */
 }
 
 /* 设置按钮的父容器为横向排列 */
 .button-container {
   display: flex;
-  justify-content: center; /* 水平居中 */
-  gap: 20px; /* 按钮之间的间距 */
+  justify-content: center;
+  /* 水平居中 */
+  gap: 20px;
+  /* 按钮之间的间距 */
 }
 </style>
-
-
-
-
-
-
-
-
-
