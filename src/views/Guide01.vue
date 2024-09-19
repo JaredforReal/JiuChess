@@ -195,7 +195,7 @@ ol li {
 .btn-with-bg:hover {
   transform: scale(1.1); /* 放大1.1倍 */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
-  background-color: #FFC000; /* 深蓝色背景 */
+  background-color: #87ceeb; /* 深蓝色背景 */
 }
 
 /* 设置按钮的父容器为横向排列 */
@@ -204,5 +204,13 @@ ol li {
   justify-content: center; /* 水平居中 */
   gap: 20px; /* 按钮之间的间距 */
 }
-  </style>
-  
+</style>
+
+
+
+
+
+
+
+
+

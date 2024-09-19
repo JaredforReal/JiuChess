@@ -41,6 +41,7 @@
         </div>
         <div v-else-if="gamePhase === 'moving'">
           <p>白子请移动棋子</p>
+          <p v-if="isWhiteFlying">白子飞行模式</p>
         </div>
         <div v-else-if="gamePhase === 'removing'">
           <p>白子请移除黑子</p>
@@ -61,6 +62,7 @@
         </div>
         <div v-else-if="gamePhase === 'moving'">
           <p>黑子请移动棋子</p>
+          <p v-if="isBlackFlying">黑子飞行模式</p>
         </div>
         <div v-else-if="gamePhase === 'removing'">
           <p>黑子请移除白子</p>
@@ -70,7 +72,6 @@
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .Board {
@@ -87,9 +88,9 @@
 }
 
 .cell {
-  width: 38px;
-  height: 38px;
-  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,12 +122,16 @@
 
 .chessboard {
   text-align: center;
-  width: 532px;
+  width: 560px;
+  height: 560px;
   display: grid;
   grid-template-columns: repeat(14, 38px);
   grid-template-rows: repeat(14, 38px);
   gap: 0;
-  background-color: #deb887;
+  background-image: url('../assets/Chessboard.png');
+  background-size: 125%;
+  background-repeat: no-repeat;
+  background-position: -70px -70px;
   border: 1px solid black;
   margin-top: 10px;
 }
@@ -279,7 +284,7 @@
 </style>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const size = 14;
 const board = ref(Array.from({ length: size }, () => Array(size).fill(null)));
@@ -298,10 +303,13 @@ const selectedPiece = ref(null);
 
 const piecessToRemove = ref(0);
 
+const isWhiteFlying = computed(() => gamePhase.value === 'moving' && whitePieceLeft.value <= size);
+const isBlackFlying = computed(() => gamePhase.value === 'moving' && blackPieceLeft.value <= size);
+
 const initializeGame = () => {
   const center = Math.floor(size / 2);
-  board.value[center][center] = 1;
-  board.value[center - 1][center - 1] = 0;
+  board.value[center - 1][center] = 1;
+  board.value[center][center - 1] = 0;
   whitePieceLeft.value--;
   blackPieceLeft.value--;
   totalMoves.value += 2;
@@ -313,6 +321,8 @@ const enterMovingPhase = () => {
   board.value[center][center] = null;
   board.value[center - 1][center - 1] = null;
   gamePhase.value = 'moving';
+  whitePieceLeft.value = 97;
+  blackPieceLeft.value = 97;
 };
 
 const isSelected = (row, col) => {
@@ -326,6 +336,10 @@ const canMoveTo = (row, col) => {
 
   const [selectedRow, selectedCol] = selectedPiece.value;
   const opponent = currentPlayer.value === 1 ? 0 : 1;
+
+  if ((currentPlayer.value === 1 && isWhiteFlying.value) || (currentPlayer.value === 0 && isBlackFlying.value)) {
+    return board.value[row][col] === null;
+  }
 
   const isAdjacent =
     (col === selectedCol && Math.abs(row - selectedRow) === 1)
@@ -389,6 +403,11 @@ const movePiece = (row, col) => {
       const jumpedRow = (row + selectedRow) / 2;
       const jumpedCol = (col + selectedCol) / 2;
       board.value[jumpedRow][jumpedCol] = null;
+      if (currentPlayer.value === 1) {
+        blackPieceLeft.value--;
+      } else {
+        whitePieceLeft.value--;
+      }
     }
 
     board.value[selectedRow][selectedCol] = null;
@@ -423,6 +442,11 @@ const movePiece = (row, col) => {
 const removePiece = (row, col) => {
   if (board.value[row][col] === (currentPlayer.value === 1 ? 0 : 1)) {
     board.value[row][col] = null;
+    if (currentPlayer.value === 1) {
+      blackPieceLeft.value--;
+    } else {
+      whitePieceLeft.value--;
+    }
     piecessToRemove.value--;
 
     if (piecessToRemove.value === 0) {
