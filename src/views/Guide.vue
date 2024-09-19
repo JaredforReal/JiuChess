@@ -214,7 +214,8 @@
     /* 白色字体 */
     font-family: 'Tibetan', sans-serif; /* 如果有藏文字体，可以指定 */
     font-size: 30px;
-    color: #fff; /* 白色字体 */
+    color: #fff;
+    /* 白色字体 */
     margin-bottom: 10px;
 }
 
@@ -285,7 +286,6 @@
     background-image: url('../assets/B05.png');
     background-size: cover;
 }
-
 /* 鼠标悬停时放大效果 */
 .btn-with-bg:hover {
     transform: scale(1.1);
