@@ -57,18 +57,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px; /* 按钮之间的间距 */
+    gap: 80px; /* 按钮之间的间距 */
 }
 
 /* 通用按钮样式 */
 .btn-with-bg {
-    width: 160px;
+    width: 140px;
     height: 90px;
     background-color: #00384d; /* 深蓝色背景 */
     border-radius: 20px; /* 圆角 */
@@ -109,6 +110,6 @@ body {
 .btn-with-bg:hover {
     transform: scale(1.1); /* 放大1.1倍 */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加阴影，使放大效果更明显 */
-    background-color: #FFC000; /* 深蓝色背景 */
+    background-color: skyblue; /* 深蓝色背景 */
 }
 </style>
